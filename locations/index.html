@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Locations - Zipsurf</title>
+    <meta
+      name="description"
+      content="Find a Zipsurf high speed internet access center near you."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#0f172a",
+                primary: "#0ea5e9",
+                accent: "#22d3ee",
+              },
+              primary: "#0ea5e9",
+              secondary: "#0369a1",
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1e293b",
+              "text-light": "#334155",
+              "text-dark": "#e2e8f0",
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Scroll Animations */
+      .reveal {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        will-change: opacity, transform;
+      }
+      .reveal.active {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+      .reveal-up {
+        transform: translateY(40px);
+      }
+      .reveal-scale {
+        transform: scale(0.95);
+      }
+      .delay-100 {
+        transition-delay: 100ms;
+      }
+      .delay-200 {
+        transition-delay: 200ms;
+      }
+      .delay-300 {
+        transition-delay: 300ms;
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased overflow-x-hidden bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 min-h-screen flex flex-col"
+  >
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <a
+            href="../merge.html"
+            class="flex-shrink-0 flex items-center gap-2 group"
+          >
+            <div
+              class="bg-slate-900 p-2 rounded-2xl shadow-lg border border-white/10 dark:bg-slate-800/50"
+            >
+              <img
+                src="../assets/zipsurf-logo.png"
+                alt="Zipsurf Logo"
+                class="h-12 w-12"
+              />
+            </div>
+            <span
+              class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white group-hover:text-brand-accent transition-colors"
+            >
+              Zipsurf
+            </span>
+          </a>
+
+          <!-- Desktop Links -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="../merge.html#features"
+              class="text-gray-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-brand-accent transition-colors font-medium"
+              >Features</a
+            >
+            <a
+              href="../merge.html#pricing"
+              class="text-gray-600 dark:text-slate-300 hover:text-brand-accent dark:hover:text-brand-accent transition-colors font-medium"
+              >Pricing</a
+            >
+            <a
+              href="#"
+              class="text-brand-primary dark:text-brand-accent font-semibold transition-colors"
+              >Locations</a
+            >
+
+            <!-- Theme toggle -->
+            <button
+              class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              id="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              <span
+                class="material-icons text-gray-500 dark:text-gray-400 text-xl"
+                >dark_mode</span
+              >
+            </button>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center gap-2">
+            <button
+              id="theme-toggle-mobile"
+              class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <span
+                class="material-icons text-gray-500 dark:text-gray-400 text-xl"
+                >dark_mode</span
+              >
+            </button>
+            <button
+              id="mobile-menu-btn"
+              class="text-gray-600 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white p-2 focus:outline-none"
+            >
+              <span class="material-icons">menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 shadow-xl absolute w-full"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-2">
+          <a
+            href="../merge.html#features"
+            class="block px-3 py-3 text-base font-medium text-gray-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-md"
+            >Features</a
+          >
+          <a
+            href="../merge.html#pricing"
+            class="block px-3 py-3 text-base font-medium text-gray-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-md"
+            >Pricing</a
+          >
+          <a
+            href="#"
+            class="block px-3 py-3 text-base font-medium text-brand-primary dark:text-brand-accent bg-blue-50 dark:bg-slate-800 rounded-md"
+            >Locations</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header
+      class="pt-32 pb-12 bg-gray-50 dark:bg-slate-900/50 border-b border-gray-200 dark:border-slate-800"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal reveal-up"
+      >
+        <h1
+          class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+        >
+          Find a <span class="text-primary">Zipsurf Center</span>
+        </h1>
+        <p class="text-lg text-gray-600 dark:text-slate-400 max-w-2xl mx-auto">
+          Visit one of our high-speed access points. Open extended hours for
+          your convenience.
+        </p>
+      </div>
+    </header>
+
+    <!-- Locations Grid -->
+    <main class="flex-grow py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Location 1 -->
+          <div
+            class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all reveal reveal-scale delay-100 group"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <div
+                class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl text-primary"
+              >
+                <span class="material-icons">business</span>
+              </div>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+              >
+                Open Now
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Downtown Hub
+            </h3>
+            <div class="space-y-3 text-sm text-gray-600 dark:text-slate-400">
+              <div class="flex items-start gap-3">
+                <span class="material-icons text-lg text-slate-400 mt-0.5"
+                  >place</span
+                >
+                <span
+                  >123 Market Street, Suite 400<br />San Francisco, CA
+                  94105</span
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-lg text-slate-400"
+                  >schedule</span
+                >
+                <span>Mon-Sun: 24 Hours</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-lg text-slate-400">wifi</span>
+                <span>10 Gbps Fiber</span>
+              </div>
+            </div>
+            <div
+              class="mt-6 pt-6 border-t border-gray-100 dark:border-slate-700"
+            >
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=123+Market+Street,+San+Francisco,+CA+94105"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2 px-4 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg hover:bg-brand-primary hover:text-white dark:hover:bg-brand-primary transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                Get Directions
+                <span class="material-icons text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Location 2 -->
+          <div
+            class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all reveal reveal-scale delay-300 group"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <div
+                class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl text-primary"
+              >
+                <span class="material-icons">computer</span>
+              </div>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+              >
+                Open Now
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Bloomers Hub
+            </h3>
+            <div class="space-y-3 text-sm text-gray-600 dark:text-slate-400">
+              <div class="flex items-start gap-3">
+                <span class="material-icons text-lg text-slate-400 mt-0.5"
+                  >place</span
+                >
+                <span>456 Central Avenue<br />San Francisco, CA 94111</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-lg text-slate-400"
+                  >schedule</span
+                >
+                <span>Mon-Sun: 24 Hours</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-lg text-slate-400">wifi</span>
+                <span>15 Gbps Shared</span>
+              </div>
+            </div>
+            <div
+              class="mt-6 pt-6 border-t border-gray-100 dark:border-slate-700"
+            >
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=456+Central+Avenue,+San+Francisco,+CA+94111"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2 px-4 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg hover:bg-brand-primary hover:text-white dark:hover:bg-brand-primary transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                Get Directions
+                <span class="material-icons text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Location 3 -->
+          <div
+            class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all reveal reveal-scale delay-300 group"
+          >
+            <div class="flex justify-between items-start mb-4">
+              <div
+                class="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-xl text-primary"
+              >
+                <span class="material-icons">computer</span>
+              </div>
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
+              >
+                Closed
+              </span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              Tech District
+            </h3>
+            <div class="space-y-3 text-sm text-gray-600 dark:text-slate-400">
+              <div class="flex items-start gap-3">
+                <span class="material-icons text-lg text-slate-400 mt-0.5"
+                  >place</span
+                >
+                <span>789 Innovation Drive<br />San Francisco, CA 94107</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-lg text-slate-400"
+                  >schedule</span
+                >
+                <span>Mon-Fri: 7:00 AM - 11:00 PM</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-icons text-lg text-slate-400">wifi</span>
+                <span>10 Gbps Dedicated</span>
+              </div>
+            </div>
+            <div
+              class="mt-6 pt-6 border-t border-gray-100 dark:border-slate-700"
+            >
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=789+Innovation+Drive,+San+Francisco,+CA+94107"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2 px-4 bg-gray-50 dark:bg-slate-700 text-gray-900 dark:text-white rounded-lg hover:bg-brand-primary hover:text-white dark:hover:bg-brand-primary transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                Get Directions
+                <span class="material-icons text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gray-100 dark:bg-slate-950 border-t border-gray-200 dark:border-slate-900 py-12"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="flex flex-col items-center md:items-start">
+          <span
+            class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2"
+          >
+            <span class="text-brand-accent">~</span> Zipsurf
+          </span>
+          <p class="text-slate-500 text-sm mt-2">
+            ©
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            Zipsurf Business Center.
+          </p>
+        </div>
+        <div class="flex gap-6 text-sm text-gray-500 dark:text-slate-400">
+          <a href="#" class="hover:text-brand-accent transition-colors"
+            >Terms of Service</a
+          >
+          <a href="#" class="hover:text-brand-accent transition-colors"
+            >Privacy Policy</a
+          >
+          <a href="#" class="hover:text-brand-accent transition-colors"
+            >Support</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Theme Logic
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const themeToggleMobileBtn = document.getElementById(
+        "theme-toggle-mobile"
+      );
+
+      function setThemeIcons(mode) {
+        const desktopIcon = themeToggleBtn?.querySelector(".material-icons");
+        const mobileIcon =
+          themeToggleMobileBtn?.querySelector(".material-icons");
+        const text = mode === "dark" ? "light_mode" : "dark_mode";
+        if (desktopIcon) desktopIcon.textContent = text;
+        if (mobileIcon) mobileIcon.textContent = text;
+      }
+
+      const prefersDark =
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+      if (prefersDark) {
+        document.documentElement.classList.add("dark");
+        setThemeIcons("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        setThemeIcons("light");
+      }
+
+      function toggleTheme() {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+          setThemeIcons("light");
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+          setThemeIcons("dark");
+        }
+      }
+
+      if (themeToggleBtn) themeToggleBtn.addEventListener("click", toggleTheme);
+      if (themeToggleMobileBtn)
+        themeToggleMobileBtn.addEventListener("click", toggleTheme);
+
+      // Mobile Menu
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // Scroll Animation
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

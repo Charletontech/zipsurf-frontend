@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Zipsurf | Premium Internet Access</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0ea5e9", // Sky blue derived from the wave logo
+              secondary: "#0369a1", // Darker blue for hover states
+              "background-light": "#f8fafc",
+              "background-dark": "#0f172a",
+              "surface-light": "#ffffff",
+              "surface-dark": "#1e293b",
+              "text-light": "#334155",
+              "text-dark": "#e2e8f0",
+            },
+            fontFamily: {
+              display: ["Inter", "sans-serif"],
+              body: ["Inter", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 min-h-screen flex flex-col"
+  >
+    <nav
+      class="w-full bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 fixed top-0 z-50"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+            <div class="h-8 w-8 relative flex items-center justify-center">
+              <img
+                alt="Zipsurf Logo Placeholder"
+                class="h-8 w-8 object-contain hidden"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoCw2_SY8-IqxuRU7KSJDlu7J9PlIysyUXTrCqKaI-IImPPdS6bF7-sn2uxE6yVomAXPKOKhCZJVDzKZFHJsIKjdHzFcGl5YhyMuh2NKHAKuc_LkaIjWpAvumofTBGYuAyObhbSDtrCCt5MA82G7mprTcqAq-OjBHUN62Y0f1sqNYrVdKQW5wlAKcEI0yFkg9M2cxQydUtgUjVKsfWPCStwmsXBaLViF5cJQ3XZUPScnoum-0CZKCMj8NbUwcc_rrmFX9N3B3HWGg"
+              />
+              <span class="material-icons text-primary text-3xl">waves</span>
+            </div>
+            <span
+              class="font-display font-bold text-xl tracking-tight text-gray-900 dark:text-white"
+              >Zipsurf</span
+            >
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+              href="#features"
+              >Features</a
+            >
+            <a
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+              href="#pricing"
+              >Pricing</a
+            >
+            <a
+              class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium"
+              href="#locations"
+              >Locations</a
+            >
+          </div>
+          <div class="flex items-center gap-4">
+            <button
+              class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              id="theme-toggle"
+            >
+              <span
+                class="material-icons text-gray-500 dark:text-gray-400 text-xl"
+                >dark_mode</span
+              >
+            </button>
+            <a
+              class="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all"
+              href="#pricing"
+            >
+              Get Connected
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="flex-grow pt-16">
+      <div class="relative overflow-hidden">
+        <div
+          class="absolute inset-y-0 h-full w-full bg-gradient-to-br from-blue-50 to-white dark:from-slate-900 dark:to-background-dark -z-10"
+        ></div>
+        <div
+          class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-primary/10 blur-3xl"
+        ></div>
+        <div
+          class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-teal-400/10 blur-3xl"
+        ></div>
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center"
+        >
+          <div class="text-center lg:text-left">
+            <div
+              class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-primary text-xs font-semibold uppercase tracking-wider mb-6"
+            >
+              High Speed Business Center
+            </div>
+            <h1
+              class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6"
+            >
+              Surf the Web at <span class="text-primary">Lightning Speed</span>
+            </h1>
+            <p
+              class="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0"
+            >
+              Reliable, secure, and affordable internet access for your business
+              needs. Pay only for the time you use with Zipsurf's flexible
+              plans.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <a
+                class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary hover:bg-secondary md:text-lg shadow-lg hover:shadow-xl transition-all"
+                href="#pricing"
+              >
+                Start Surfing
+                <span class="material-icons ml-2 text-sm">arrow_forward</span>
+              </a>
+              <a
+                class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-lg text-gray-700 dark:text-gray-200 bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-gray-800 md:text-lg transition-all"
+                href="#locations"
+              >
+                Find a Center
+              </a>
+            </div>
+            <div
+              class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500 dark:text-gray-400"
+            >
+              <div class="flex items-center gap-1">
+                <span class="material-icons text-green-500 text-lg"
+                  >check_circle</span
+                >
+                <span>Gigabit Speeds</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="material-icons text-green-500 text-lg"
+                  >check_circle</span
+                >
+                <span>Secure Connection</span>
+              </div>
+            </div>
+          </div>
+          <div class="relative lg:h-full flex items-center justify-center">
+            <div
+              class="relative rounded-2xl bg-white dark:bg-surface-dark shadow-2xl p-2 border border-gray-100 dark:border-gray-700 w-full max-w-md transform rotate-2 hover:rotate-0 transition-transform duration-500"
+            >
+              <div
+                class="absolute -top-4 -right-4 bg-primary text-white p-3 rounded-lg shadow-lg z-10 flex items-center gap-2"
+              >
+                <span class="material-icons">speed</span>
+                <span class="font-bold">1 Gbps</span>
+              </div>
+              <img
+                alt="Modern business center workspace with computers"
+                class="rounded-xl w-full h-auto object-cover aspect-[4/3]"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5N0rdEhr0rgGdMEHeL_tf9dqNdjVUXnFFaqwf6f6LWS8FOmwLIdaUbRuAEqYWfGZ44nK-ulTCqqCDqHMhsAjUbzTjJmSiqrE20ocb8n_YYrBBPABwE0ithWhvL24psh4jsr3VwfYB4MsBnmjj24iJMBfz6f5WWqmM7NY79N7JC87FPMSO88A9DeTmMlBG-FWf5wn7yJXCiupFBlebow959qK8YZI6NzJ9jISys0QxzJsp8lpccC0iJzIWRHgiLJ3Wtw6gfqSCXxM"
+              />
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-4">
+                  <div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                      Active Session
+                    </h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      Connected to Zipsurf_5G
+                    </p>
+                  </div>
+                  <div
+                    class="h-3 w-3 rounded-full bg-green-500 animate-pulse"
+                  ></div>
+                </div>
+                <div
+                  class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2"
+                >
+                  <div
+                    class="bg-primary h-2 rounded-full"
+                    style="width: 75%"
+                  ></div>
+                </div>
+                <p class="text-xs text-right text-gray-500 dark:text-gray-400">
+                  Time remaining: 45 min
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <section class="py-20 bg-white dark:bg-surface-dark" id="features">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2
+              class="text-primary font-semibold tracking-wide uppercase text-sm mb-2"
+            >
+              Why Choose Us
+            </h2>
+            <h3
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
+              Designed for Productivity
+            </h3>
+            <p
+              class="mt-4 max-w-2xl text-xl text-gray-500 dark:text-gray-400 mx-auto"
+            >
+              We provide more than just internet. We provide a workspace that
+              empowers you to get things done.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="p-8 bg-background-light dark:bg-background-dark rounded-2xl hover:shadow-lg transition-shadow border border-transparent dark:border-gray-800"
+            >
+              <div
+                class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center text-primary mb-6"
+              >
+                <span class="material-icons">bolt</span>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Instant Access
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                No contracts, no waiting. Scan a QR code, pick a plan, and get
+                online instantly. Perfect for travelers and freelancers.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-background-light dark:bg-background-dark rounded-2xl hover:shadow-lg transition-shadow border border-transparent dark:border-gray-800"
+            >
+              <div
+                class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center text-primary mb-6"
+              >
+                <span class="material-icons">security</span>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Enterprise Security
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Your data is safe with us. We use enterprise-grade firewalls and
+                isolated networks for every guest session.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-background-light dark:bg-background-dark rounded-2xl hover:shadow-lg transition-shadow border border-transparent dark:border-gray-800"
+            >
+              <div
+                class="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center text-primary mb-6"
+              >
+                <span class="material-icons">print</span>
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                Business Services
+              </h4>
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                Need to print, scan, or fax? Our centers are fully equipped with
+                modern office amenities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="py-20 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800"
+        id="pricing"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
+              Simple, Transparent Pricing
+            </h2>
+            <p class="mt-4 text-xl text-gray-500 dark:text-gray-400">
+              Pay only for what you need. No hidden fees.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div
+              class="bg-white dark:bg-surface-dark rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 flex flex-col relative overflow-hidden group"
+            >
+              <div
+                class="absolute top-0 left-0 w-full h-1 bg-gray-200 group-hover:bg-gray-400 transition-colors"
+              ></div>
+              <h3
+                class="text-lg font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+              >
+                Quick Surf
+              </h3>
+              <div class="mt-4 flex items-baseline">
+                <span
+                  class="text-4xl font-extrabold text-gray-900 dark:text-white"
+                  >$2</span
+                >
+                <span class="ml-1 text-xl text-gray-500 dark:text-gray-400"
+                  >/30 min</span
+                >
+              </div>
+              <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm">
+                Perfect for checking emails or quick tasks.
+              </p>
+              <ul class="mt-6 space-y-4 flex-1">
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >High Speed Internet</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Use our Computers</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-8 block w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg py-3 text-sm font-semibold text-gray-900 dark:text-white text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                href="#"
+                >Select Plan</a
+              >
+            </div>
+            <div
+              class="bg-white dark:bg-surface-dark rounded-2xl shadow-xl p-8 flex flex-col relative overflow-hidden transform md:-translate-y-4 border-2 border-primary"
+            >
+              <div
+                class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase"
+              >
+                Best Value
+              </div>
+              <h3
+                class="text-lg font-medium text-primary uppercase tracking-wide"
+              >
+                Productivity
+              </h3>
+              <div class="mt-4 flex items-baseline">
+                <span
+                  class="text-4xl font-extrabold text-gray-900 dark:text-white"
+                  >$10</span
+                >
+                <span class="ml-1 text-xl text-gray-500 dark:text-gray-400"
+                  >/3 hours</span
+                >
+              </div>
+              <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm">
+                Enough time to finish a project or attend meetings.
+              </p>
+              <ul class="mt-6 space-y-4 flex-1">
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Priority Bandwidth</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Private Booth Access</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Free Coffee</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-8 block w-full bg-primary rounded-lg py-3 text-sm font-semibold text-white text-center hover:bg-secondary transition-colors shadow-md"
+                href="#"
+                >Select Plan</a
+              >
+            </div>
+            <div
+              class="bg-white dark:bg-surface-dark rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 flex flex-col relative overflow-hidden group"
+            >
+              <div
+                class="absolute top-0 left-0 w-full h-1 bg-gray-200 group-hover:bg-gray-400 transition-colors"
+              ></div>
+              <h3
+                class="text-lg font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide"
+              >
+                Day Pass
+              </h3>
+              <div class="mt-4 flex items-baseline">
+                <span
+                  class="text-4xl font-extrabold text-gray-900 dark:text-white"
+                  >$25</span
+                >
+                <span class="ml-1 text-xl text-gray-500 dark:text-gray-400"
+                  >/day</span
+                >
+              </div>
+              <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm">
+                Full access for the entire business day.
+              </p>
+              <ul class="mt-6 space-y-4 flex-1">
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Unlimited Bandwidth</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Printing Credits</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="material-icons text-green-500 text-sm mt-0.5"
+                    >check</span
+                  >
+                  <span class="ml-3 text-gray-600 dark:text-gray-300 text-sm"
+                    >Meeting Room Discount</span
+                  >
+                </li>
+              </ul>
+              <a
+                class="mt-8 block w-full bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg py-3 text-sm font-semibold text-gray-900 dark:text-white text-center hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                href="#"
+                >Select Plan</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer
+        class="bg-white dark:bg-surface-dark border-t border-gray-200 dark:border-gray-800"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+          <div
+            class="bg-primary rounded-3xl p-8 md:p-12 overflow-hidden relative"
+          >
+            <div
+              class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-10"
+            ></div>
+            <div
+              class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-white opacity-10"
+            ></div>
+            <div class="relative z-10 text-center">
+              <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+                Ready to get connected?
+              </h2>
+              <p class="mt-4 text-lg leading-6 text-blue-100 max-w-2xl mx-auto">
+                Visit one of our convenient locations or purchase a pass online
+                today. Experience the difference of Zipsurf.
+              </p>
+              <div class="mt-8 flex justify-center gap-4">
+                <a
+                  class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-blue-50 transition-colors"
+                  href="#"
+                >
+                  Buy a Pass
+                </a>
+                <a
+                  class="inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-colors"
+                  href="#"
+                >
+                  Find Location
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:flex md:items-center md:justify-between border-t border-gray-100 dark:border-gray-800"
+        >
+          <div class="flex justify-center space-x-6 md:order-2">
+            <a class="text-gray-400 hover:text-gray-500" href="#">
+              <span class="sr-only">Facebook</span>
+              <svg
+                aria-hidden="true"
+                class="h-6 w-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+            <a class="text-gray-400 hover:text-gray-500" href="#">
+              <span class="sr-only">Instagram</span>
+              <svg
+                aria-hidden="true"
+                class="h-6 w-6"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.488 2h.172zm-1.886 6.94c-1.29 0-2.337 1.047-2.337 2.337 0 1.29 1.047 2.337 2.337 2.337 1.29 0 2.337-1.047 2.337-2.337 0-1.29-1.047-2.337-2.337-2.337zM12 4.86c-3.926 0-7.14 3.214-7.14 7.14 0 3.926 3.214 7.14 7.14 7.14 3.926 0 7.14-3.214 7.14-7.14 0-3.926-3.214-7.14-7.14-7.14zm5.85 2.15a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="mt-8 md:mt-0 md:order-1">
+            <p class="text-center text-base text-gray-400">
+              © 2023 Zipsurf Internet Centers. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script>
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const icon = themeToggleBtn.querySelector(".material-icons");
+      // Check local storage or system preference on load
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+        icon.textContent = "light_mode";
+      } else {
+        document.documentElement.classList.remove("dark");
+        icon.textContent = "dark_mode";
+      }
+      themeToggleBtn.addEventListener("click", () => {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+          icon.textContent = "dark_mode";
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+          icon.textContent = "light_mode";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zipsurf | Premium Internet Access</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                blue: "#0072FF",
+                cyan: "#00C6FF",
+                dark: "#0B1120",
+              },
+            },
+            backgroundImage: {
+              "dot-pattern": "radial-gradient(#CBD5E1 1px, transparent 1px)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* The Hero Background Image */
+      .hero-section {
+        background-image: url("IMG-20251222-WA0035.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Creates the parallax effect */
+        position: relative;
+      }
+
+      /* Dark overlay to make text readable on top of the image */
+      .hero-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(15, 23, 42, 0.4),
+          rgba(15, 23, 42, 0.9)
+        );
+      }
+
+      /* Frosted Glass Effect for the Login Box */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      }
+
+      /* Dot pattern for the white sections */
+      .bg-dots {
+        background-size: 20px 20px;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased text-slate-800 bg-slate-50">
+    <nav class="absolute w-full z-50 top-0 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <div class="flex items-center gap-3">
+            <img
+              class="h-10 w-auto drop-shadow-lg"
+              src="IMG-20251222-WA0035-Photoroom.png"
+              alt="Zipsurf Logo"
+            />
+            <span
+              class="font-bold text-2xl text-white tracking-wide drop-shadow-md"
+              >Zipsurf</span
+            >
+          </div>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#features"
+              class="text-slate-200 hover:text-white text-sm font-medium transition"
+              >Features</a
+            >
+            <a
+              href="#pricing"
+              class="text-slate-200 hover:text-white text-sm font-medium transition"
+              >Pricing</a
+            >
+            <a
+              href="#"
+              class="px-5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white text-sm font-bold border border-white/20 transition backdrop-blur-sm"
+            >
+              Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section
+      class="hero-section min-h-[90vh] flex items-center justify-center pt-20 pb-12 px-4"
+    >
+      <div class="absolute inset-0 hero-overlay"></div>
+
+      <div
+        class="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+      >
+        <div class="text-center lg:text-left space-y-6">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/20 border border-brand-cyan/30 text-brand-cyan text-xs font-bold uppercase tracking-widest backdrop-blur-md"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"
+            ></span>
+            High Speed Zone
+          </div>
+          <h1
+            class="text-5xl sm:text-6xl font-bold text-white leading-tight drop-shadow-xl"
+          >
+            Experience the <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-white"
+              >Power of Speed.</span
+            >
+          </h1>
+          <p
+            class="text-lg text-slate-300 max-w-lg mx-auto lg:mx-0 leading-relaxed"
+          >
+            Welcome to Zipsurf Business Center. Whether you are gaming, working,
+            or streaming, we provide the bandwidth you need.
+          </p>
+
+          <div
+            class="flex flex-wrap gap-4 justify-center lg:justify-start pt-4"
+          >
+            <div class="flex items-center gap-2 text-slate-300 text-sm">
+              <svg
+                class="w-5 h-5 text-brand-cyan"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              Secure
+            </div>
+            <div class="flex items-center gap-2 text-slate-300 text-sm">
+              <svg
+                class="w-5 h-5 text-brand-cyan"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              Reliable
+            </div>
+            <div class="flex items-center gap-2 text-slate-300 text-sm">
+              <svg
+                class="w-5 h-5 text-brand-cyan"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              Instant
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full max-w-md mx-auto">
+          <div
+            id="auth-box"
+            class="glass-card rounded-2xl p-8 text-white relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:left-full transition-all duration-1000 ease-in-out"
+            ></div>
+
+            <h2 class="text-2xl font-bold mb-1">Connect Now</h2>
+            <p class="text-slate-300 text-sm mb-6">
+              Enter your access code to begin browsing.
+            </p>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4 relative z-10">
+              <div>
+                <label
+                  class="block text-xs font-medium text-slate-300 mb-1 uppercase tracking-wider"
+                  >Access Code</label
+                >
+                <input
+                  type="text"
+                  id="voucher-code"
+                  class="w-full bg-slate-900/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:border-transparent transition-all"
+                  placeholder="XXXX-XXXX-XXXX"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-gradient-to-r from-brand-cyan to-brand-blue hover:from-cyan-400 hover:to-blue-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg shadow-blue-500/30 transform hover:scale-[1.02] transition-all"
+              >
+                Start Session
+              </button>
+            </form>
+            <div class="mt-6 text-center">
+              <p class="text-xs text-slate-400">
+                Don't have a code?
+                <a href="#pricing" class="text-brand-cyan hover:underline"
+                  >View Rates</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="success-box"
+            class="hidden glass-card rounded-2xl p-8 text-center border-green-500/50"
+          >
+            <div
+              class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-green-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white">Connected!</h3>
+            <p class="text-slate-300 mt-2">Your internet session is active.</p>
+
+            <div
+              class="my-6 p-4 bg-slate-900/60 rounded-lg border border-slate-700"
+            >
+              <div
+                id="countdown-timer"
+                class="text-4xl font-mono text-brand-cyan font-bold tracking-wider"
+              >
+                00:00:00
+              </div>
+              <div class="text-xs text-slate-500 mt-1 uppercase">
+                Time Remaining
+              </div>
+            </div>
+
+            <button
+              onclick="handleLogout()"
+              class="text-sm text-red-400 hover:text-white underline transition"
+            >
+              Disconnect
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="py-20 bg-white bg-dot-pattern bg-dots">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="text-3xl font-bold text-slate-900">
+            More Than Just Internet
+          </h2>
+          <p class="mt-4 text-slate-600">
+            We are a full-service business center equipped to handle all your
+            digital needs.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-slate-100"
+          >
+            <div
+              class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-6 h-6 text-brand-blue"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Workstations</h3>
+            <p class="text-slate-500 leading-relaxed">
+              Comfortable desks with high-performance PCs available for hourly
+              rental.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-slate-100"
+          >
+            <div
+              class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-6 h-6 text-brand-cyan"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Print & Scan</h3>
+            <p class="text-slate-500 leading-relaxed">
+              High-quality laser printing, photocopying, and document scanning
+              services.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-shadow border border-slate-100"
+          >
+            <div
+              class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center mb-6"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-3">Gaming Zone</h3>
+            <p class="text-slate-500 leading-relaxed">
+              Dedicated gaming area with ultra-low latency fiber connection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-20 bg-slate-50 border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-slate-900">
+            Flexible Time Passes
+          </h2>
+          <p class="mt-4 text-slate-600">
+            Choose the plan that fits your schedule.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+          >
+            <h3 class="text-lg font-medium text-slate-500">Quick Surf</h3>
+            <div class="mt-4 flex items-baseline text-slate-900">
+              <span class="text-5xl font-bold tracking-tight">₦200</span>
+              <span class="ml-1 text-xl font-semibold text-slate-500"
+                >/30m</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-400">Best for checking emails.</p>
+            <ul class="mt-6 space-y-4 mb-8 flex-1">
+              <li class="flex text-sm text-slate-600">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Standard Speed
+              </li>
+              <li class="flex text-sm text-slate-600">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Single Device
+              </li>
+            </ul>
+            <button
+              class="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-xl transition"
+            >
+              Select Plan
+            </button>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl shadow-2xl shadow-blue-900/10 border-2 border-brand-blue p-8 flex flex-col relative transform md:scale-105 z-10"
+          >
+            <div
+              class="absolute top-0 right-0 bg-brand-blue text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-lg"
+            >
+              MOST POPULAR
+            </div>
+            <h3 class="text-lg font-medium text-brand-blue">Standard</h3>
+            <div class="mt-4 flex items-baseline text-slate-900">
+              <span class="text-5xl font-bold tracking-tight">₦500</span>
+              <span class="ml-1 text-xl font-semibold text-slate-500"
+                >/2hrs</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-400">
+              Perfect for movies & work.
+            </p>
+            <ul class="mt-6 space-y-4 mb-8 flex-1">
+              <li class="flex text-sm text-slate-900 font-medium">
+                <svg
+                  class="w-5 h-5 text-brand-blue mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                High Speed (4G/5G)
+              </li>
+              <li class="flex text-sm text-slate-900 font-medium">
+                <svg
+                  class="w-5 h-5 text-brand-blue mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Priority Support
+              </li>
+              <li class="flex text-sm text-slate-900 font-medium">
+                <svg
+                  class="w-5 h-5 text-brand-blue mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Printing Discount
+              </li>
+            </ul>
+            <button
+              class="w-full py-3 px-4 bg-brand-blue hover:bg-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 transition"
+            >
+              Select Plan
+            </button>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+          >
+            <h3 class="text-lg font-medium text-slate-500">Day Pass</h3>
+            <div class="mt-4 flex items-baseline text-slate-900">
+              <span class="text-5xl font-bold tracking-tight">₦2500</span>
+              <span class="ml-1 text-xl font-semibold text-slate-500"
+                >/24hrs</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-400">For heavy downloaders.</p>
+            <ul class="mt-6 space-y-4 mb-8 flex-1">
+              <li class="flex text-sm text-slate-600">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Uncapped Speed
+              </li>
+              <li class="flex text-sm text-slate-600">
+                <svg
+                  class="w-5 h-5 text-green-500 mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Multi-device allowed
+              </li>
+            </ul>
+            <button
+              class="w-full py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-xl transition"
+            >
+              Select Plan
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-brand-dark text-slate-400 py-12 border-t border-slate-800"
+    >
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <img
+          class="h-8 mx-auto mb-4 grayscale brightness-50 opacity-50"
+          src="IMG-20251222-WA0035-Photoroom.png"
+          alt="Zipsurf"
+        />
+        <p class="text-sm">
+          &copy; 2026 Zipsurf Business Center. Located at Main Street, Abuja.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      let timerInterval;
+
+      function handleLogin(e) {
+        e.preventDefault();
+        const input = document.getElementById("voucher-code");
+        const btn = e.target.querySelector("button");
+
+        if (input.value.trim().length < 3) {
+          alert("Please enter a valid voucher code.");
+          return;
+        }
+
+        // Simulate loading
+        const originalText = btn.innerText;
+        btn.innerText = "Connecting...";
+        btn.classList.add("opacity-75");
+
+        setTimeout(() => {
+          // Switch to success view
+          document.getElementById("auth-box").classList.add("hidden");
+          document.getElementById("success-box").classList.remove("hidden");
+
+          // Start 1 hour timer
+          startTimer(3600);
+
+          btn.innerText = originalText;
+          btn.classList.remove("opacity-75");
+        }, 1500);
+      }
+
+      function startTimer(duration) {
+        let timer = duration,
+          hours,
+          minutes,
+          seconds;
+        const display = document.getElementById("countdown-timer");
+
+        clearInterval(timerInterval);
+        updateDisplay();
+
+        timerInterval = setInterval(updateDisplay, 1000);
+
+        function updateDisplay() {
+          hours = parseInt(timer / 3600, 10);
+          minutes = parseInt((timer % 3600) / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          hours = hours < 10 ? "0" + hours : hours;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = hours + ":" + minutes + ":" + seconds;
+
+          if (--timer < 0) {
+            handleLogout();
+            alert("Session Expired");
+          }
+        }
+      }
+
+      function handleLogout() {
+        clearInterval(timerInterval);
+        document.getElementById("success-box").classList.add("hidden");
+        document.getElementById("auth-box").classList.remove("hidden");
+        document.getElementById("voucher-code").value = "";
+      }
+    </script>
+  </body>
+</html>

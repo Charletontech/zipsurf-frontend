@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In | ZipSurf</title>
+
+    <!-- CoolAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/coolalertjs@latest/dist/coolalert.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#0f172a",
+                primary: "#0ea5e9",
+                accent: "#22d3ee",
+              },
+              primary: "#0ea5e9",
+              secondary: "#0369a1",
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="font-sans antialiased bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen flex transition-colors duration-300">
+    
+    <!-- Left Split (Visual) -->
+    <div class="hidden lg:flex lg:w-1/2 bg-slate-900 relative overflow-hidden items-center justify-center p-12">
+      <!-- Decorative Background Elements -->
+      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+      <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-primary/20 blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-brand-accent/20 blur-3xl"></div>
+      
+      <!-- Content -->
+      <div class="relative z-10 text-white max-w-lg">
+        <a href="../merge.html" class="inline-flex items-center gap-2 mb-12 group">
+           <div class="bg-white/10 backdrop-blur-md p-2 rounded-xl border border-white/10">
+              <img src="../assets/zipsurf-logo.png" alt="Logo" class="h-8 w-8 invert opacity-90">
+           </div>
+           <span class="text-2xl font-bold tracking-tight">Zipsurf</span>
+        </a>
+
+        <h2 class="text-4xl font-bold leading-tight mb-6">Welcome back to the future of connectivity.</h2>
+        <p class="text-lg text-slate-300 mb-8 leading-relaxed">
+          Log in to manage your high-speed sessions, view usage analytics, and top up your account instantly.
+        </p>
+        
+        <div class="flex items-center gap-4 text-sm text-slate-400">
+          <div class="flex -space-x-2">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-900 grayscale opacity-70" src="https://i.pravatar.cc/100?img=1" alt=""/>
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-900 grayscale opacity-70" src="https://i.pravatar.cc/100?img=2" alt=""/>
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-900 grayscale opacity-70" src="https://i.pravatar.cc/100?img=3" alt=""/>
+          </div>
+          <p>Join 10k+ users surfing today.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Split (Form) -->
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-12 relative">
+      <!-- Theme Toggle (Absolute Top Right) -->
+      <button
+        id="theme-toggle"
+        class="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+        aria-label="Toggle theme"
+      >
+        <svg id="theme-icon" class="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <!-- Icon injected by JS -->
+        </svg>
+      </button>
+
+      <!-- Mobile Logo (Only visible on small screens) -->
+      <a href="../merge.html" class="lg:hidden absolute top-6 left-6 flex items-center gap-2">
+         <img src="../assets/zipsurf-logo.png" alt="Logo" class="h-8 w-8 dark:invert-0 invert">
+         <span class="font-bold text-xl text-gray-900 dark:text-white">Zipsurf</span>
+      </a>
+
+      <div class="w-full max-w-md animate-fade-in-up">
+        <div class="text-center lg:text-left mb-10">
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Log in</h1>
+          <p class="text-gray-500 dark:text-slate-400">
+            Don't have an account? 
+            <a href="../signup/index.html" class="text-brand-primary font-medium hover:text-brand-secondary transition-colors">Sign up</a>
+          </p>
+        </div>
+
+        <form id="login-form" class="space-y-6">
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5">Email address</label>
+            <div class="relative">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all pl-11"
+                placeholder="you@example.com"
+                required
+              />
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <label for="password" class="block text-sm font-medium text-gray-700 dark:text-slate-300">Password</label>
+              <a href="../forgot-password/index.html" class="text-sm font-medium text-brand-primary hover:text-brand-secondary">Forgot password?</a>
+            </div>
+            <div class="relative">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-primary focus:border-transparent outline-none transition-all pl-11 pr-10"
+                placeholder="••••••••"
+                required
+              />
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <!-- Toggle Password Visibility -->
+              <button type="button" id="toggle-password" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors focus:outline-none">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember Me -->
+          <div class="flex items-center">
+            <input
+              id="remember-me"
+              name="remember-me"
+              type="checkbox"
+              class="h-4 w-4 text-brand-primary focus:ring-brand-primary border-gray-300 rounded bg-gray-50 dark:bg-slate-800 dark:border-slate-700 cursor-pointer"
+            />
+            <label for="remember-me" class="ml-2 block text-sm text-gray-600 dark:text-slate-400 cursor-pointer select-none">
+              Remember me for 30 days
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full flex justify-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg shadow-brand-primary/20 text-sm font-semibold text-white bg-brand-primary hover:bg-brand-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary transition-all transform hover:-translate-y-0.5"
+          >
+            Sign in
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module">
+      import { Ui, Api } from '../scripts/utils.js';
+
+      // --- Theme Logic ---
+      const themeBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      
+      const moonPath = "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z";
+      const sunPath = "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z";
+
+      function updateTheme(isDark) {
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          localStorage.theme = 'dark';
+          themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${sunPath}" />`;
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';
+          themeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${moonPath}" />`;
+        }
+      }
+
+      const prefersDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      updateTheme(prefersDark);
+
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        updateTheme(!isDark);
+      });
+
+      // --- Form Logic ---
+      const form = document.getElementById('login-form');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const togglePasswordBtn = document.getElementById('toggle-password');
+
+      // Toggle Password Visibility
+      togglePasswordBtn.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        // Update Icon
+        const eyeOpen = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />`;
+        const eyeClosed = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />`;
+        
+        togglePasswordBtn.querySelector('svg').innerHTML = type === 'password' ? eyeOpen : eyeClosed;
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Signing in...';
+
+        try {
+            const response = await Api.post('/auth/login', {
+                email: emailInput.value,
+                password: passwordInput.value
+            });
+            
+            // Save Token & User
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            
+            Ui.toast('success', 'Welcome Back', 'Successfully logged in!');
+            
+            setTimeout(() => {
+                 // Redirect based on role
+                 if (response.data.user.role === 'admin') {
+                     window.location.href = '../admin/index.html';
+                 } else {
+                     window.location.href = '../dashboard/index.html';
+                 }
+            }, 1000);
+            
+        } catch (err) {
+            Ui.toast('error', 'Login Failed', err.message);
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Station Officer Portal | ZipSurf</title>
+
+    <!-- CoolAlert/SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/coolalertjs@latest/dist/coolalert.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#0f172a",
+                primary: "#0ea5e9",
+                secondary: "#0369a1",
+                accent: "#22d3ee",
+              },
+            },
+            animation: {
+              "fade-in-up": "fadeInUp 0.6s ease-out forwards",
+              blob: "blob 7s infinite",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .glass-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      .dark .glass-card {
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased bg-slate-50 dark:bg-brand-dark text-slate-800 dark:text-slate-200 min-h-screen transition-colors duration-300 relative overflow-x-hidden"
+  >
+    <!-- Background Decor -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+      <div
+        class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-primary/10 blur-3xl animate-blob"
+      ></div>
+      <div
+        class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-brand-accent/10 blur-3xl animate-blob"
+        style="animation-delay: 2s"
+      ></div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="absolute top-0 w-full z-10 p-6 flex justify-between items-center"
+    >
+      <a href="../index.html" class="flex items-center gap-3">
+        <div
+          class="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-2 rounded-xl shadow-sm border border-gray-100 dark:border-slate-700"
+        >
+          <img
+            src="../assets/zipsurf-logo.png"
+            alt="Zipsurf"
+            class="h-8 w-8 dark:invert-0 invert"
+          />
+        </div>
+        <span
+          class="font-bold text-lg text-gray-900 dark:text-white hidden sm:block"
+          >Zipsurf Officer Portal</span
+        >
+      </a>
+
+      <button
+        id="theme-toggle"
+        class="p-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur shadow-sm border border-gray-100 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-700 transition-colors"
+      >
+        <span
+          class="material-icons text-gray-500 dark:text-slate-400 text-xl"
+          id="theme-icon"
+          >dark_mode</span
+        >
+      </button>
+    </header>
+
+    <main class="min-h-screen flex items-center justify-center p-4 py-24">
+      <div class="w-full max-w-5xl grid lg:grid-cols-2 gap-8 items-start">
+        <!-- Registration Section -->
+        <div class="glass-card rounded-3xl p-8 shadow-xl animate-fade-in-up">
+          <div class="mb-8">
+            <div
+              class="h-12 w-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4"
+            >
+              <span class="material-icons text-2xl">badge</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              Officer Registration
+            </h2>
+            <p class="text-gray-500 dark:text-slate-400 mt-2 text-sm">
+              New here? Register to be assigned a Station Code.
+            </p>
+          </div>
+
+          <form id="registration-form" class="space-y-5">
+            <!-- Name -->
+            <div>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5"
+                >Full Name</label
+              >
+              <input
+                id="officer-name"
+                type="text"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-primary outline-none transition-all dark:text-white"
+                placeholder="Officer John Doe"
+              />
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5"
+                >Phone Number</label
+              >
+              <input
+                id="officer-phone"
+                type="tel"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-primary outline-none transition-all dark:text-white"
+                placeholder="+234..."
+              />
+            </div>
+
+            <!-- Address -->
+            <div>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5"
+                >Home Address</label
+              >
+              <textarea
+                id="officer-address"
+                rows="2"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-primary outline-none transition-all dark:text-white resize-none"
+                placeholder="Residential Address"
+              ></textarea>
+            </div>
+
+            <!-- Station Dropdown -->
+            <div>
+              <label
+                class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5"
+                >Station of Choice</label
+              >
+              <div class="relative">
+                <select
+                  id="station-select"
+                  required
+                  class="w-full pl-4 pr-10 py-3 rounded-xl bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-white focus:ring-2 focus:ring-brand-primary outline-none appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected>
+                    Select a location...
+                  </option>
+                  <!-- Populated by JS -->
+                </select>
+                <span
+                  class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                  >expand_more</span
+                >
+              </div>
+              <p class="text-xs text-gray-500 mt-1.5">
+                This is where you will be stationed to work.
+              </p>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-3.5 rounded-xl bg-brand-primary hover:bg-brand-secondary text-white font-bold shadow-lg shadow-brand-primary/20 transition-all transform hover:-translate-y-0.5"
+            >
+              Register Officer
+            </button>
+          </form>
+        </div>
+
+        <!-- Login / Verification Section -->
+        <div class="space-y-6">
+          <!-- Login Card -->
+          <div
+            class="glass-card rounded-3xl p-8 shadow-xl animate-fade-in-up"
+            style="animation-delay: 0.2s"
+          >
+            <div class="mb-6">
+              <div
+                class="h-12 w-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400 mb-4"
+              >
+                <span class="material-icons text-2xl">verified_user</span>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                Officer Access
+              </h2>
+              <p class="text-gray-500 dark:text-slate-400 mt-2 text-sm">
+                Already registered? Enter your Station Code to get the daily
+                password.
+              </p>
+            </div>
+
+            <form id="login-form" class="space-y-5">
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-1.5"
+                  >Station Code</label
+                >
+                <input
+                  id="station-code-input"
+                  type="text"
+                  required
+                  class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 focus:ring-2 focus:ring-green-500 outline-none transition-all dark:text-white font-mono tracking-widest uppercase placeholder:normal-case placeholder:tracking-normal"
+                  placeholder="e.g. ST-LEKKI-001"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="w-full py-3.5 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold shadow-lg transition-all transform hover:-translate-y-0.5"
+              >
+                Verify & Get Password
+              </button>
+            </form>
+          </div>
+
+          <!-- Result Card (Hidden by default) -->
+          <div
+            id="result-card"
+            class="hidden glass-card rounded-3xl p-8 border-l-4 border-l-green-500 animate-fade-in-up"
+          >
+            <div class="flex items-start justify-between">
+              <div>
+                <p
+                  class="text-sm font-bold text-gray-500 dark:text-slate-400 uppercase tracking-wide"
+                >
+                  Daily Router Password
+                </p>
+                <h3
+                  id="station-name-display"
+                  class="text-lg font-medium text-gray-900 dark:text-white mt-1 mb-4"
+                >
+                  Lekki Phase 1 Hub
+                </h3>
+              </div>
+              <span class="material-icons text-green-500">wifi</span>
+            </div>
+
+                             <div id="copy-password-btn" class="bg-gray-100 dark:bg-slate-900/60 p-5 rounded-2xl flex items-center justify-between group cursor-pointer">
+              <code
+                id="router-password"
+                class="text-2xl font-mono font-bold text-brand-primary tracking-wider"
+                >---</code
+              >
+              <span
+                class="material-icons text-gray-400 group-hover:text-brand-primary transition-colors"
+                >content_copy</span
+              >
+            </div>
+            <p
+              class="text-xs text-gray-400 dark:text-slate-500 mt-3 text-center"
+            >
+              Valid until 11:59 PM today
+            </p>
+          </div>
+
+          <!-- Info Box -->
+          <div
+            class="bg-blue-50/50 dark:bg-slate-800/50 p-6 rounded-3xl border border-blue-100 dark:border-slate-700 backdrop-blur-sm animate-fade-in-up"
+            style="animation-delay: 0.3s"
+          >
+            <div class="flex gap-3">
+              <span class="material-icons text-brand-primary">info</span>
+              <p
+                class="text-sm text-gray-600 dark:text-slate-400 leading-relaxed"
+              >
+                <strong>Note:</strong> Station Codes are unique to each officer
+                and location. Do not share your code. If you forget your code,
+                please contact the central admin.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script type="module" src="../scripts/station-officer.js"></script>
+    <script>
+      // Theme Logic
+      const themeBtn = document.getElementById("theme-toggle");
+      const themeIcon = document.getElementById("theme-icon");
+
+      function updateTheme(isDark) {
+        if (isDark) {
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+          themeIcon.innerText = "light_mode";
+        } else {
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+          themeIcon.innerText = "dark_mode";
+        }
+      }
+
+      const prefersDark =
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
+      updateTheme(prefersDark);
+
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        updateTheme(!isDark);
+      });
+    </script>
+  </body>
+</html>

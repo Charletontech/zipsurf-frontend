@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zipsurf - High Speed Internet Access</title>
+    <meta
+      name="description"
+      content="Pay-as-you-go high speed internet access."
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#0f172a", // Slate 900
+                primary: "#0ea5e9", // Sky 500
+                accent: "#22d3ee", // Cyan 400
+              },
+            },
+            animation: {
+              blob: "blob 7s infinite",
+              pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+      .wave-bg {
+        background: radial-gradient(
+          circle at top right,
+          #1e293b 0%,
+          #0f172a 40%
+        );
+      }
+      /* Custom selection color */
+      ::selection {
+        background-color: #22d3ee;
+        color: #0f172a;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased overflow-x-hidden">
+    <!-- Navbar -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <a href="#" class="flex-shrink-0 flex items-center gap-2 group">
+            <!-- Logo SVG -->
+            <svg
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-10 w-10"
+            >
+              <circle cx="50" cy="50" r="50" fill="url(#grad1)" />
+              <path
+                d="M25 55C25 55 35 40 50 40C65 40 75 50 75 50C75 50 65 65 50 65C35 65 25 55 25 55Z"
+                fill="white"
+                fill-opacity="0.9"
+              />
+              <path
+                d="M30 60C30 60 40 48 52 48C64 48 70 58 70 58"
+                stroke="#0ea5e9"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop
+                    offset="0%"
+                    style="stop-color: #22d3ee; stop-opacity: 1"
+                  />
+                  <stop
+                    offset="100%"
+                    style="stop-color: #0ea5e9; stop-opacity: 1"
+                  />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span
+              class="text-2xl font-bold tracking-tight text-white group-hover:text-brand-accent transition-colors"
+            >
+              Zipsurf
+            </span>
+          </a>
+
+          <!-- Desktop Links -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a
+              href="#features"
+              class="text-slate-300 hover:text-brand-accent transition-colors font-medium"
+              >Features</a
+            >
+            <a
+              href="#how-it-works"
+              class="text-slate-300 hover:text-brand-accent transition-colors font-medium"
+              >How it Works</a
+            >
+            <a
+              href="#pricing"
+              class="text-slate-300 hover:text-brand-accent transition-colors font-medium"
+              >Pricing</a
+            >
+            <button
+              class="inline-flex items-center justify-center px-6 py-2 border border-transparent text-sm font-medium rounded-xl text-slate-900 bg-brand-accent hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-400 focus:ring-offset-slate-900 shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all"
+            >
+              Check Status
+            </button>
+          </div>
+
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button
+              id="mobile-menu-btn"
+              class="text-slate-300 hover:text-white p-2 focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-slate-900 border-b border-slate-800 shadow-xl absolute w-full"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-2">
+          <a
+            href="#features"
+            class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md"
+            >Features</a
+          >
+          <a
+            href="#how-it-works"
+            class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md"
+            >How it Works</a
+          >
+          <a
+            href="#pricing"
+            class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md"
+            >Pricing</a
+          >
+          <div class="pt-4">
+            <button
+              class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-slate-900 bg-brand-accent hover:bg-cyan-300 transition-all"
+            >
+              Check Status
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden wave-bg"
+    >
+      <!-- Abstract Background Element -->
+      <div
+        class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"
+      ></div>
+      <div
+        class="absolute top-0 left-0 -ml-20 -mt-20 w-72 h-72 bg-brand-accent rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"
+      ></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          class="inline-flex items-center px-4 py-2 rounded-full border border-slate-700 bg-slate-800/50 backdrop-blur-sm mb-8"
+        >
+          <span
+            class="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"
+          ></span>
+          <span class="text-sm text-slate-300"
+            >Network Status:
+            <span class="text-white font-medium">Online & Fast</span></span
+          >
+        </div>
+
+        <h1
+          class="text-5xl md:text-7xl font-bold text-white tracking-tight mb-6 leading-tight"
+        >
+          Surf at
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-primary"
+            >Light Speed</span
+          >
+        </h1>
+
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400">
+          Premium internet access for the modern nomad. Purchase time instantly,
+          surf securely, and get disconnected automatically when you're done.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#pricing"
+            class="group inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-slate-900 bg-brand-accent hover:bg-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all"
+          >
+            Get Access Now
+            <svg
+              class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
+          <a
+            href="#how-it-works"
+            class="inline-flex items-center justify-center px-8 py-4 border border-slate-600 text-lg font-medium rounded-xl text-slate-200 bg-transparent hover:bg-slate-800 transition-all"
+          >
+            How it Works
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <div class="border-y border-slate-800 bg-slate-900/50 backdrop-blur-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div>
+            <div class="text-2xl font-bold text-white">99.9%</div>
+            <div class="text-sm text-slate-500 uppercase tracking-wider">
+              Uptime
+            </div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-white">1 Gbps</div>
+            <div class="text-sm text-slate-500 uppercase tracking-wider">
+              Speed
+            </div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-white">10k+</div>
+            <div class="text-sm text-slate-500 uppercase tracking-wider">
+              Users
+            </div>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-white">24/7</div>
+            <div class="text-sm text-slate-500 uppercase tracking-wider">
+              Support
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-slate-900 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-white">Why Choose Zipsurf?</h2>
+          <p class="mt-4 text-slate-400 max-w-2xl mx-auto">
+            We provide a business-class environment with internet speeds that
+            allow you to work, stream, or play without interruption.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-12">
+          <!-- Feature 1 -->
+          <div
+            class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800 hover:border-slate-700 transition-colors"
+          >
+            <div
+              class="bg-slate-900 rounded-lg p-3 inline-block mb-4 border border-slate-700"
+            >
+              <svg
+                class="h-6 w-6 text-brand-accent"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">
+              Lightning Fast
+            </h3>
+            <p class="text-slate-400 leading-relaxed">
+              Gigabit fiber connection ensures zero lag whether you are working
+              or gaming.
+            </p>
+          </div>
+          <!-- Feature 2 -->
+          <div
+            class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800 hover:border-slate-700 transition-colors"
+          >
+            <div
+              class="bg-slate-900 rounded-lg p-3 inline-block mb-4 border border-slate-700"
+            >
+              <svg
+                class="h-6 w-6 text-brand-accent"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Secure Access</h3>
+            <p class="text-slate-400 leading-relaxed">
+              Each session is isolated on our network, keeping your data private
+              and safe.
+            </p>
+          </div>
+          <!-- Feature 3 -->
+          <div
+            class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800 hover:border-slate-700 transition-colors"
+          >
+            <div
+              class="bg-slate-900 rounded-lg p-3 inline-block mb-4 border border-slate-700"
+            >
+              <svg
+                class="h-6 w-6 text-brand-accent"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-white mb-3">Pay As You Go</h3>
+            <p class="text-slate-400 leading-relaxed">
+              No contracts. No subscriptions. Pay only for the time you need,
+              down to the minute.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section
+      id="how-it-works"
+      class="py-24 bg-gradient-to-b from-slate-900 to-slate-800 border-t border-slate-800"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+              Simple Access, <br />Zero Complications
+            </h2>
+            <p class="text-slate-400 text-lg mb-8">
+              Our system is designed for instant gratification. No long sign-up
+              forms or contracts. Just pure internet.
+            </p>
+
+            <div class="space-y-8">
+              <!-- Step 1 -->
+              <div class="flex gap-4">
+                <div
+                  class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-brand-primary/10 text-brand-accent border border-brand-primary/20"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">
+                    Choose a Plan
+                  </h4>
+                  <p class="text-slate-400">Select how much time you need.</p>
+                </div>
+              </div>
+              <!-- Step 2 -->
+              <div class="flex gap-4">
+                <div
+                  class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-brand-primary/10 text-brand-accent border border-brand-primary/20"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">
+                    Get Your Code
+                  </h4>
+                  <p class="text-slate-400">
+                    Receive a unique login code instantly.
+                  </p>
+                </div>
+              </div>
+              <!-- Step 3 -->
+              <div class="flex gap-4">
+                <div
+                  class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-brand-primary/10 text-brand-accent border border-brand-primary/20"
+                >
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-white">
+                    Start Surfing
+                  </h4>
+                  <p class="text-slate-400">
+                    Login and enjoy blazing fast speeds.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative hidden lg:block">
+            <!-- Decorative graphic -->
+            <div
+              class="bg-slate-900 rounded-2xl border border-slate-700 p-2 shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500"
+            >
+              <div class="bg-slate-800 rounded-xl p-8 border border-slate-700">
+                <div class="flex justify-center mb-8">
+                  <svg
+                    class="h-16 w-16 text-brand-accent animate-pulse"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
+                    />
+                  </svg>
+                </div>
+                <div class="space-y-4">
+                  <div
+                    class="h-12 bg-slate-700 rounded-lg animate-pulse w-full"
+                  ></div>
+                  <div
+                    class="h-12 bg-slate-700 rounded-lg animate-pulse w-full"
+                  ></div>
+                  <div
+                    class="h-12 bg-brand-primary/50 rounded-lg w-full mt-6"
+                  ></div>
+                </div>
+                <div class="mt-8 text-center">
+                  <p class="text-sm text-slate-500">
+                    Session expires automatically
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-slate-900 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-white">Transparent Pricing</h2>
+          <p class="mt-4 text-slate-400">
+            Time-based access. When the clock stops, the internet stops.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Plan 1 -->
+          <div
+            class="bg-slate-800/50 border border-slate-700 hover:border-slate-500 hover:bg-slate-800 relative flex flex-col p-8 rounded-2xl transition-all duration-300 group"
+          >
+            <div class="flex-1">
+              <h3 class="text-xl font-medium text-slate-200">Quick Surf</h3>
+              <div class="mt-4 flex items-baseline">
+                <span class="text-4xl font-bold text-white tracking-tight"
+                  >$1.00</span
+                >
+              </div>
+              <div class="flex items-center gap-2 mt-2 text-brand-accent">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-sm font-semibold">30 Mins Access</span>
+              </div>
+              <ul class="mt-6 space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">
+                    High-speed connection
+                  </p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Perfect for email</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">1 Device</p>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8">
+              <button
+                onclick="selectPlan('Quick Surf')"
+                class="w-full inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-xl text-slate-200 bg-transparent hover:bg-slate-800 transition-all focus:outline-none"
+              >
+                Get Code
+              </button>
+            </div>
+          </div>
+
+          <!-- Plan 2 (Popular) -->
+          <div
+            class="bg-slate-800 border-2 border-brand-accent shadow-[0_0_40px_rgba(34,211,238,0.15)] transform md:-translate-y-4 relative flex flex-col p-8 rounded-2xl transition-all duration-300 group"
+          >
+            <div
+              class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span
+                class="bg-brand-accent text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide"
+              >
+                Most Popular
+              </span>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-medium text-white">Power Hour</h3>
+              <div class="mt-4 flex items-baseline">
+                <span class="text-4xl font-bold text-white tracking-tight"
+                  >$1.50</span
+                >
+              </div>
+              <div class="flex items-center gap-2 mt-2 text-brand-accent">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-sm font-semibold">1 Hour Access</span>
+              </div>
+              <ul class="mt-6 space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-brand-accent flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Ultra-fast browsing</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-brand-accent flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Streaming supported</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-brand-accent flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Secure connection</p>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8">
+              <button
+                onclick="selectPlan('Power Hour')"
+                class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-slate-900 bg-brand-accent hover:bg-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all focus:outline-none"
+              >
+                Get Code
+              </button>
+            </div>
+          </div>
+
+          <!-- Plan 3 -->
+          <div
+            class="bg-slate-800/50 border border-slate-700 hover:border-slate-500 hover:bg-slate-800 relative flex flex-col p-8 rounded-2xl transition-all duration-300 group"
+          >
+            <div class="flex-1">
+              <h3 class="text-xl font-medium text-slate-200">Deep Dive</h3>
+              <div class="mt-4 flex items-baseline">
+                <span class="text-4xl font-bold text-white tracking-tight"
+                  >$3.50</span
+                >
+              </div>
+              <div class="flex items-center gap-2 mt-2 text-brand-accent">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-sm font-semibold">3 Hours Access</span>
+              </div>
+              <ul class="mt-6 space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Priority bandwidth</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">HD Video Streaming</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Gaming supported</p>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8">
+              <button
+                onclick="selectPlan('Deep Dive')"
+                class="w-full inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-xl text-slate-200 bg-transparent hover:bg-slate-800 transition-all focus:outline-none"
+              >
+                Get Code
+              </button>
+            </div>
+          </div>
+
+          <!-- Plan 4 -->
+          <div
+            class="bg-slate-800/50 border border-slate-700 hover:border-slate-500 hover:bg-slate-800 relative flex flex-col p-8 rounded-2xl transition-all duration-300 group"
+          >
+            <div class="flex-1">
+              <h3 class="text-xl font-medium text-slate-200">Day Pass</h3>
+              <div class="mt-4 flex items-baseline">
+                <span class="text-4xl font-bold text-white tracking-tight"
+                  >$10.00</span
+                >
+              </div>
+              <div class="flex items-center gap-2 mt-2 text-brand-accent">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span class="text-sm font-semibold">24 Hours Access</span>
+              </div>
+              <ul class="mt-6 space-y-4">
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Unlimited Data</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Maximum Speed</p>
+                </li>
+                <li class="flex items-start">
+                  <svg
+                    class="h-5 w-5 text-slate-500 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  <p class="ml-3 text-sm text-slate-300">Up to 3 Devices</p>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8">
+              <button
+                onclick="selectPlan('Day Pass')"
+                class="w-full inline-flex items-center justify-center px-6 py-3 border border-slate-600 text-base font-medium rounded-xl text-slate-200 bg-transparent hover:bg-slate-800 transition-all focus:outline-none"
+              >
+                Get Code
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="flex flex-col items-center md:items-start">
+          <span
+            class="text-2xl font-bold text-white tracking-tight flex items-center gap-2"
+          >
+            <span class="text-brand-accent">~</span> Zipsurf
+          </span>
+          <p class="text-slate-500 text-sm mt-2">
+            ©
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            Zipsurf Business Center.
+          </p>
+        </div>
+
+        <div class="flex gap-6 text-sm text-slate-400">
+          <a href="#" class="hover:text-brand-accent transition-colors"
+            >Terms of Service</a
+          >
+          <a href="#" class="hover:text-brand-accent transition-colors"
+            >Privacy Policy</a
+          >
+          <a href="#" class="hover:text-brand-accent transition-colors"
+            >Support</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+      // Mobile Menu Toggle
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+
+      // Close mobile menu on link click
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+        });
+      });
+
+      // Navbar Scroll Effect
+      const nav = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+          nav.classList.add(
+            "bg-slate-900/80",
+            "backdrop-blur-md",
+            "border-b",
+            "border-slate-800"
+          );
+          nav.classList.remove("bg-transparent");
+        } else {
+          nav.classList.remove(
+            "bg-slate-900/80",
+            "backdrop-blur-md",
+            "border-b",
+            "border-slate-800"
+          );
+          nav.classList.add("bg-transparent");
+        }
+      });
+
+      // Plan Selection logic
+      function selectPlan(planName) {
+        // In a real application, this would redirect to payment or open a modal
+        alert(
+          `You selected the ${planName} plan. In a production app, this would open the payment gateway.`
+        );
+      }
+    </script>
+  </body>
+</html>
+<!-- here is the link: https://documenter.getpostman.com/view/39514723/2sBXVckXzo its a postman documentation page u will
+  use it to integrate the backend for this frontend app we are currently it. go to that link and tell me what u
+  understand -->
