@@ -190,6 +190,7 @@ async function handleAddLocation() {
     title: 'Add New Location',
     html:
       '<input id="swal-loc-name" class="swal2-input" placeholder="Location Name">' +
+      '<input id="swal-loc-address" class="swal2-input" placeholder="Address">' +
       '<select id="swal-loc-status" class="swal2-input"><option value="Active">Active</option><option value="Maintenance">Maintenance</option></select>',
     focusConfirm: false,
     showCancelButton: true,
@@ -197,20 +198,21 @@ async function handleAddLocation() {
     preConfirm: () => {
       return [
         document.getElementById('swal-loc-name').value,
+        document.getElementById('swal-loc-address').value,
         document.getElementById('swal-loc-status').value
       ]
     }
   });
 
   if (formValues) {
-    const [name, status] = formValues;
-    if (!name) {
-       Ui.toast('error', 'Error', 'Location name is required');
+    const [name, address, status] = formValues;
+    if (!name || !address) {
+       Ui.toast('error', 'Error', 'Location name and address are required');
        return;
     }
 
     try {
-        await Api.post('/locations', { name, status });
+        await Api.post('/locations', { name, address, status });
         Ui.toast('success', 'Added', `Location "${name}" added successfully.`);
         fetchLocations();
         fetchStats();

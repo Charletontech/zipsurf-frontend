@@ -19,7 +19,10 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- Tailwind Config -->
     <script>
@@ -39,19 +42,35 @@
               },
             },
             animation: {
-              'fade-in-up': 'fadeInUp 0.4s ease-out forwards',
+              "fade-in-up": "fadeInUp 0.4s ease-out forwards",
             },
             keyframes: {
               fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              }
-            }
+                "0%": { opacity: "0", transform: "translateY(10px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            },
           },
         },
       };
     </script>
-    
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement("script"),
+          s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = "https://embed.tawk.to/6963cf8faae923197d5071cc/1jemu5j7p";
+        s1.charset = "UTF-8";
+        s1.setAttribute("crossorigin", "*");
+        s0.parentNode.insertBefore(s1, s0);
+      })();
+    </script>
+    <!--End of Tawk.to Script-->
+
     <style>
       /* Glassmorphism utilities */
       .glass {
@@ -62,7 +81,7 @@
       .dark .glass {
         background: rgba(15, 23, 42, 0.7);
       }
-      
+
       .glass-card {
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(12px);
@@ -74,40 +93,77 @@
       }
     </style>
   </head>
-  <body class="font-sans antialiased bg-slate-100 dark:bg-brand-dark text-slate-800 dark:text-slate-200 min-h-screen transition-colors duration-300 overflow-hidden">
-    
+  <body
+    class="font-sans antialiased bg-slate-100 dark:bg-brand-dark text-slate-800 dark:text-slate-200 min-h-screen transition-colors duration-300 overflow-hidden"
+  >
     <div class="flex h-screen overflow-hidden relative">
       <!-- Backdrop (Mobile Only) -->
-      <div id="sidebar-backdrop" class="hidden fixed inset-0 bg-brand-dark/50 backdrop-blur-sm z-20 md:hidden"></div>
+      <div
+        id="sidebar-backdrop"
+        class="hidden fixed inset-0 bg-brand-dark/50 backdrop-blur-sm z-20 md:hidden"
+      ></div>
 
       <!-- Sidebar -->
-      <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-800 z-30 transition-all duration-300">
+      <aside
+        id="sidebar"
+        class="hidden md:flex flex-col w-64 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-800 z-30 transition-all duration-300"
+      >
         <!-- Logo & Close Btn -->
-        <div class="flex items-center justify-between h-20 px-6 border-b border-gray-100 dark:border-slate-800">
-           <div class="flex items-center gap-3">
-              <img src="../assets/zipsurf-logo.png" alt="Zipsurf" class="h-10 w-10 dark:invert-0 invert">
-              <span class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">Zipsurf</span>
-           </div>
-           <button id="close-sidebar-btn" class="md:hidden p-2 -mr-2 text-gray-500 hover:text-gray-900 dark:text-slate-400 dark:hover:text-white">
-              <span class="material-icons">close</span>
-           </button>
+        <div
+          class="flex items-center justify-between h-20 px-6 border-b border-gray-100 dark:border-slate-800"
+        >
+          <div class="flex items-center gap-3">
+            <img
+              src="../assets/zipsurf-logo.png"
+              alt="Zipsurf"
+              class="h-10 w-10 dark:invert-0 invert"
+            />
+            <span
+              class="text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >Zipsurf</span
+            >
+          </div>
+          <button
+            id="close-sidebar-btn"
+            class="md:hidden p-2 -mr-2 text-gray-500 hover:text-gray-900 dark:text-slate-400 dark:hover:text-white"
+          >
+            <span class="material-icons">close</span>
+          </button>
         </div>
 
         <!-- Navigation -->
         <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-          <a href="#" data-view="overview" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-brand-primary bg-brand-primary/10 transition-colors">
+          <a
+            href="#"
+            data-view="overview"
+            class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-brand-primary bg-brand-primary/10 transition-colors"
+          >
             <span class="material-icons text-[20px]">dashboard</span>
             Overview
           </a>
-          <a href="#" data-view="connect" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+          <a
+            href="#"
+            data-view="connect"
+            class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+          >
             <span class="material-icons text-[20px]">wifi</span>
             Connect
           </a>
-          <a href="#" data-view="wallet" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
-            <span class="material-icons text-[20px]">account_balance_wallet</span>
+          <a
+            href="#"
+            data-view="wallet"
+            class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+          >
+            <span class="material-icons text-[20px]"
+              >account_balance_wallet</span
+            >
             Wallet
           </a>
-          <a href="#" data-view="history" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
+          <a
+            href="#"
+            data-view="history"
+            class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+          >
             <span class="material-icons text-[20px]">history</span>
             History
           </a>
@@ -115,216 +171,381 @@
 
         <!-- User Profile Snippet -->
         <div class="p-4 border-t border-gray-100 dark:border-slate-800">
-          <div class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
-            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User" class="h-10 w-10 rounded-full border border-gray-200 dark:border-slate-700">
+          <div
+            class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+          >
+            <img
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              alt="User"
+              class="h-10 w-10 rounded-full border border-gray-200 dark:border-slate-700"
+            />
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-medium text-gray-900 dark:text-white truncate">Demo User</p>
-              <p class="text-xs text-gray-500 dark:text-slate-500 truncate">user@zipsurf.com</p>
+              <p
+                class="text-sm font-medium text-gray-900 dark:text-white truncate"
+              >
+                Demo User
+              </p>
+              <p class="text-xs text-gray-500 dark:text-slate-500 truncate">
+                user@zipsurf.com
+              </p>
             </div>
           </div>
-          <button data-view="logout" class="nav-link mt-2 w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+          <button
+            data-view="logout"
+            class="nav-link mt-2 w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+          >
             <span class="material-icons text-[16px]">logout</span> Sign Out
           </button>
         </div>
       </aside>
 
       <!-- Main Content -->
-      <main class="flex-1 flex flex-col relative overflow-hidden bg-slate-100 dark:bg-brand-dark">
+      <main
+        class="flex-1 flex flex-col relative overflow-hidden bg-slate-100 dark:bg-brand-dark"
+      >
         <!-- Header (Mobile Menu + Theme Toggle) -->
-        <header class="flex items-center justify-between h-20 px-6 md:px-10 border-b border-gray-200/50 dark:border-slate-800/50 glass z-10 sticky top-0">
+        <header
+          class="flex items-center justify-between h-20 px-6 md:px-10 border-b border-gray-200/50 dark:border-slate-800/50 glass z-10 sticky top-0"
+        >
           <!-- Mobile Menu Btn -->
-          <button id="mobile-menu-btn" class="md:hidden p-2 -ml-2 text-gray-600 dark:text-slate-400">
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 -ml-2 text-gray-600 dark:text-slate-400"
+          >
             <span class="material-icons">menu</span>
           </button>
 
-          <h2 id="page-title" class="hidden md:block text-lg font-semibold text-gray-800 dark:text-slate-200">User Dashboard</h2>
+          <h2
+            id="page-title"
+            class="hidden md:block text-lg font-semibold text-gray-800 dark:text-slate-200"
+          >
+            User Dashboard
+          </h2>
 
           <div class="flex items-center gap-4">
-             <!-- Wallet Chip -->
-             <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm">
-                <span class="material-icons text-brand-primary text-sm">account_balance_wallet</span>
-                <span class="text-sm font-bold text-gray-900 dark:text-white wallet-balance-display">₦0</span>
-             </div>
+            <!-- Wallet Chip -->
+            <div
+              class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-slate-800 rounded-full border border-gray-200 dark:border-slate-700 shadow-sm"
+            >
+              <span class="material-icons text-brand-primary text-sm"
+                >account_balance_wallet</span
+              >
+              <span
+                class="text-sm font-bold text-gray-900 dark:text-white wallet-balance-display"
+                >₦0</span
+              >
+            </div>
 
-             <!-- Theme Toggle -->
-             <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">
-               <span class="material-icons text-gray-500 dark:text-slate-400" id="theme-icon">dark_mode</span>
-             </button>
+            <!-- Theme Toggle -->
+            <button
+              id="theme-toggle"
+              class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors"
+            >
+              <span
+                class="material-icons text-gray-500 dark:text-slate-400"
+                id="theme-icon"
+                >dark_mode</span
+              >
+            </button>
           </div>
         </header>
 
         <!-- Scrollable Content Area -->
         <div class="flex-1 overflow-y-auto p-4 md:p-10 space-y-8">
-          
           <!-- VIEW: OVERVIEW -->
           <div id="view-overview" class="dashboard-view animate-fade-in-up">
             <!-- Greeting & Wallet Card -->
             <div class="grid lg:grid-cols-3 gap-6 mb-8">
-               <!-- Wallet Card -->
-               <div class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-primary to-brand-secondary text-white shadow-xl p-8">
-                  <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
-                  <div class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-cyan-400/20 blur-3xl"></div>
-                  
-                  <div class="relative z-10 flex flex-col h-full justify-between">
-                     <div>
-                        <p class="text-blue-100 font-medium mb-1">Total Balance</p>
-                        <h2 class="text-4xl font-bold wallet-balance-display">₦0.00</h2>
-                     </div>
-                     <div class="mt-8 flex gap-4">
-                        <button class="fund-wallet-btn px-6 py-2.5 bg-white text-brand-dark text-sm font-bold rounded-xl shadow-lg hover:bg-blue-50 transition-colors">
-                           Fund Wallet
-                        </button>
-                        <button onclick="document.querySelector('[data-view=\'connect\']').click()" class="px-6 py-2.5 bg-brand-dark/20 border border-white/20 backdrop-blur-md text-white text-sm font-bold rounded-xl hover:bg-brand-dark/30 transition-colors">
-                           Connect Now
-                        </button>
-                     </div>
-                  </div>
-               </div>
+              <!-- Wallet Card -->
+              <div
+                class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-primary to-brand-secondary text-white shadow-xl p-8"
+              >
+                <div
+                  class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white/20 blur-3xl"
+                ></div>
+                <div
+                  class="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-cyan-400/20 blur-3xl"
+                ></div>
 
-               <!-- Status Card -->
-               <div class="glass-card rounded-3xl p-6 flex flex-col justify-center items-center text-center shadow-lg dark:shadow-none">
-                  <div id="connection-status">
-                     <div class="h-16 w-16 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center mb-4 mx-auto">
-                        <span class="material-icons text-gray-400 dark:text-slate-500 text-3xl">wifi_off</span>
-                     </div>
-                     <h3 class="text-lg font-bold text-gray-900 dark:text-white">Not Connected</h3>
-                     <p class="text-sm text-gray-500 dark:text-slate-500 mt-2">Find a location to start surfing.</p>
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                  <div>
+                    <p class="text-blue-100 font-medium mb-1">Total Balance</p>
+                    <h2 class="text-4xl font-bold wallet-balance-display">
+                      ₦0.00
+                    </h2>
                   </div>
-               </div>
+                  <div class="mt-8 flex gap-4">
+                    <button
+                      class="fund-wallet-btn px-6 py-2.5 bg-white text-brand-dark text-sm font-bold rounded-xl shadow-lg hover:bg-blue-50 transition-colors"
+                    >
+                      Fund Wallet
+                    </button>
+                    <button
+                      onclick="document.querySelector('[data-view=\'connect\']').click()"
+                      class="px-6 py-2.5 bg-brand-dark/20 border border-white/20 backdrop-blur-md text-white text-sm font-bold rounded-xl hover:bg-brand-dark/30 transition-colors"
+                    >
+                      Connect Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Status Card -->
+              <div
+                class="glass-card rounded-3xl p-6 flex flex-col justify-center items-center text-center shadow-lg dark:shadow-none"
+              >
+                <div id="connection-status">
+                  <div
+                    class="h-16 w-16 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center mb-4 mx-auto"
+                  >
+                    <span
+                      class="material-icons text-gray-400 dark:text-slate-500 text-3xl"
+                      >wifi_off</span
+                    >
+                  </div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                    Not Connected
+                  </h3>
+                  <p class="text-sm text-gray-500 dark:text-slate-500 mt-2">
+                    Find a location to start surfing.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <!-- Recent Activity -->
             <div>
-               <div class="flex items-center justify-between mb-6">
-                  <h3 class="text-lg font-bold text-gray-900 dark:text-white">Recent Activity</h3>
-                  <button onclick="document.querySelector('[data-view=\'history\']').click()" class="text-sm text-brand-primary hover:text-brand-accent font-medium">View All</button>
-               </div>
-               <div class="glass-card rounded-2xl overflow-hidden">
-                  <table class="w-full text-left border-collapse">
-                     <tbody id="recent-transactions-list">
-                        <!-- Populated by JS -->
-                     </tbody>
-                  </table>
-               </div>
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                  Recent Activity
+                </h3>
+                <button
+                  onclick="document.querySelector('[data-view=\'history\']').click()"
+                  class="text-sm text-brand-primary hover:text-brand-accent font-medium"
+                >
+                  View All
+                </button>
+              </div>
+              <div class="glass-card rounded-2xl overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                  <tbody id="recent-transactions-list">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
           <!-- VIEW: CONNECT -->
           <div id="view-connect" class="dashboard-view hidden">
-             <div class="max-w-2xl mx-auto">
-                <div class="text-center mb-10">
-                   <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-3">Get Connected</h2>
-                   <p class="text-gray-500 dark:text-slate-400">Select your current location to purchase an access pass for the day.</p>
-                </div>
+            <div class="max-w-2xl mx-auto">
+              <div class="text-center mb-10">
+                <h2
+                  class="text-3xl font-bold text-gray-900 dark:text-white mb-3"
+                >
+                  Get Connected
+                </h2>
+                <p class="text-gray-500 dark:text-slate-400">
+                  Select your current location to purchase an access pass for
+                  the day.
+                </p>
+              </div>
 
-                <div class="glass-card p-8 rounded-3xl shadow-xl dark:shadow-none border border-gray-200 dark:border-slate-700">
-                   <div class="space-y-6">
-                      <!-- Hidden Password Reveal -->
-                      <div id="password-display" class="hidden flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-xl animate-fade-in-up">
-                         <p class="text-sm font-medium text-green-800 dark:text-green-300 mb-2">Today's Password</p>
-                         <div class="flex items-center gap-3">
-                            <code id="password-text" class="text-3xl font-mono font-bold text-green-700 dark:text-green-400 tracking-wider">---</code>
-                            <button id="copy-user-password-btn" class="p-2 hover:bg-green-200 dark:hover:bg-green-800 rounded-lg text-green-700 dark:text-green-400 transition-colors" title="Copy">
-                               <span class="material-icons text-xl">content_copy</span>
-                            </button>
-                         </div>
-                         <p class="text-xs text-green-600 dark:text-green-500 mt-2">Expires at 11:59 PM</p>
-                      </div>
-
-                      <div>
-                         <label class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">Current Location</label>
-                         <div class="relative">
-                            <select id="location-select" class="w-full pl-11 pr-4 py-4 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-primary outline-none appearance-none transition-all cursor-pointer">
-                               <!-- Populated by JS -->
-                            </select>
-                            <span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">place</span>
-                            <span class="material-icons absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
-                         </div>
-                      </div>
-
-                      <div class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 flex items-start gap-3">
-                         <span class="material-icons text-brand-primary mt-0.5">info</span>
-                         <div class="text-sm text-blue-900 dark:text-blue-200">
-                            <p class="font-bold mb-1">Daily Pass: ₦1,200</p>
-                            <p class="opacity-80">This pass grants you unlimited high-speed internet access at the selected location until 11:59 PM today.</p>
-                         </div>
-                      </div>
-
-                      <button id="connect-btn" class="w-full py-4 rounded-xl bg-brand-primary hover:bg-brand-secondary text-white font-bold text-lg shadow-lg shadow-brand-primary/25 transition-all transform active:scale-95">
-                         Purchase Access
+              <div
+                class="glass-card p-8 rounded-3xl shadow-xl dark:shadow-none border border-gray-200 dark:border-slate-700"
+              >
+                <div class="space-y-6">
+                  <!-- Hidden Password Reveal -->
+                  <div
+                    id="password-display"
+                    class="hidden flex-col items-center justify-center p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-xl animate-fade-in-up"
+                  >
+                    <p
+                      class="text-sm font-medium text-green-800 dark:text-green-300 mb-2"
+                    >
+                      Today's Password
+                    </p>
+                    <div class="flex items-center gap-3">
+                      <code
+                        id="password-text"
+                        class="text-3xl font-mono font-bold text-green-700 dark:text-green-400 tracking-wider"
+                        >---</code
+                      >
+                      <button
+                        id="copy-user-password-btn"
+                        class="p-2 hover:bg-green-200 dark:hover:bg-green-800 rounded-lg text-green-700 dark:text-green-400 transition-colors"
+                        title="Copy"
+                      >
+                        <span class="material-icons text-xl">content_copy</span>
                       </button>
-                   </div>
+                    </div>
+                    <p class="text-xs text-green-600 dark:text-green-500 mt-2">
+                      Expires at 11:59 PM
+                    </p>
+                  </div>
+
+                  <div>
+                    <label
+                      class="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2"
+                      >Current Location</label
+                    >
+                    <div class="relative">
+                      <select
+                        id="location-select"
+                        class="w-full pl-11 pr-4 py-4 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-primary outline-none appearance-none transition-all cursor-pointer"
+                      >
+                        <!-- Populated by JS -->
+                      </select>
+                      <span
+                        class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                        >place</span
+                      >
+                      <span
+                        class="material-icons absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+                        >expand_more</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 flex items-start gap-3"
+                  >
+                    <span class="material-icons text-brand-primary mt-0.5"
+                      >info</span
+                    >
+                    <div class="text-sm text-blue-900 dark:text-blue-200">
+                      <p class="font-bold mb-1">Daily Pass: ₦1,200</p>
+                      <p class="opacity-80">
+                        This pass grants you unlimited high-speed internet
+                        access at the selected location until 11:59 PM today.
+                      </p>
+                    </div>
+                  </div>
+
+                  <button
+                    id="connect-btn"
+                    class="w-full py-4 rounded-xl bg-brand-primary hover:bg-brand-secondary text-white font-bold text-lg shadow-lg shadow-brand-primary/25 transition-all transform active:scale-95"
+                  >
+                    Purchase Access
+                  </button>
                 </div>
-             </div>
+              </div>
+            </div>
           </div>
 
           <!-- VIEW: WALLET -->
           <div id="view-wallet" class="dashboard-view hidden">
-             <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
-                   <div>
-                      <p class="text-sm text-gray-500 dark:text-slate-400">Available Balance</p>
-                      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mt-1 wallet-balance-display">₦0</h2>
-                   </div>
-                   <div class="h-12 w-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                      <span class="material-icons">account_balance_wallet</span>
-                   </div>
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+              <div
+                class="glass-card p-6 rounded-2xl flex items-center justify-between"
+              >
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-slate-400">
+                    Available Balance
+                  </p>
+                  <h2
+                    class="text-3xl font-bold text-gray-900 dark:text-white mt-1 wallet-balance-display"
+                  >
+                    ₦0
+                  </h2>
                 </div>
-                <div class="glass-card p-6 rounded-2xl flex items-center justify-between">
-                   <div>
-                      <p class="text-sm text-gray-500 dark:text-slate-400">Total Spent</p>
-                      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mt-1 total-spent-display">₦0</h2>
-                   </div>
-                   <div class="h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
-                      <span class="material-icons">trending_down</span>
-                   </div>
+                <div
+                  class="h-12 w-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary"
+                >
+                  <span class="material-icons">account_balance_wallet</span>
                 </div>
-             </div>
+              </div>
+              <div
+                class="glass-card p-6 rounded-2xl flex items-center justify-between"
+              >
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-slate-400">
+                    Total Spent
+                  </p>
+                  <h2
+                    class="text-3xl font-bold text-gray-900 dark:text-white mt-1 total-spent-display"
+                  >
+                    ₦0
+                  </h2>
+                </div>
+                <div
+                  class="h-12 w-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400"
+                >
+                  <span class="material-icons">trending_down</span>
+                </div>
+              </div>
+            </div>
 
-             <div class="glass-card rounded-2xl p-6">
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">Funding Options</h3>
-                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                   <button class="fund-wallet-btn p-4 border border-gray-200 dark:border-slate-700 rounded-xl hover:border-brand-primary dark:hover:border-brand-primary hover:bg-blue-50 dark:hover:bg-slate-800 transition-all text-left group">
-                      <div class="flex items-center gap-3 mb-2">
-                         <span class="material-icons text-brand-primary group-hover:scale-110 transition-transform">credit_card</span>
-                         <span class="font-bold text-gray-900 dark:text-white">Pay with Card</span>
-                      </div>
-                      <p class="text-xs text-gray-500 dark:text-slate-400">Instant funding via Paystack</p>
-                   </button>
-                   <button class="fund-wallet-btn p-4 border border-gray-200 dark:border-slate-700 rounded-xl hover:border-brand-primary dark:hover:border-brand-primary hover:bg-blue-50 dark:hover:bg-slate-800 transition-all text-left group">
-                      <div class="flex items-center gap-3 mb-2">
-                         <span class="material-icons text-brand-primary group-hover:scale-110 transition-transform">account_balance</span>
-                         <span class="font-bold text-gray-900 dark:text-white">Bank Transfer</span>
-                      </div>
-                      <p class="text-xs text-gray-500 dark:text-slate-400">Direct transfer to virtual account</p>
-                   </button>
-                </div>
-             </div>
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-6">
+                Funding Options
+              </h3>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <button
+                  class="fund-wallet-btn p-4 border border-gray-200 dark:border-slate-700 rounded-xl hover:border-brand-primary dark:hover:border-brand-primary hover:bg-blue-50 dark:hover:bg-slate-800 transition-all text-left group"
+                >
+                  <div class="flex items-center gap-3 mb-2">
+                    <span
+                      class="material-icons text-brand-primary group-hover:scale-110 transition-transform"
+                      >credit_card</span
+                    >
+                    <span class="font-bold text-gray-900 dark:text-white"
+                      >Pay with Card</span
+                    >
+                  </div>
+                  <p class="text-xs text-gray-500 dark:text-slate-400">
+                    Instant funding via Paystack
+                  </p>
+                </button>
+                <button
+                  class="fund-wallet-btn p-4 border border-gray-200 dark:border-slate-700 rounded-xl hover:border-brand-primary dark:hover:border-brand-primary hover:bg-blue-50 dark:hover:bg-slate-800 transition-all text-left group"
+                >
+                  <div class="flex items-center gap-3 mb-2">
+                    <span
+                      class="material-icons text-brand-primary group-hover:scale-110 transition-transform"
+                      >account_balance</span
+                    >
+                    <span class="font-bold text-gray-900 dark:text-white"
+                      >Bank Transfer</span
+                    >
+                  </div>
+                  <p class="text-xs text-gray-500 dark:text-slate-400">
+                    Direct transfer to virtual account
+                  </p>
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- VIEW: HISTORY -->
           <div id="view-history" class="dashboard-view hidden">
-             <div class="glass-card rounded-3xl overflow-hidden">
-                <div class="p-6 border-b border-gray-100 dark:border-slate-800">
-                   <h3 class="text-lg font-bold text-gray-900 dark:text-white">Transaction History</h3>
-                </div>
-                <div class="overflow-x-auto">
-                   <table class="w-full text-left">
-                      <thead class="bg-gray-50 dark:bg-slate-800 text-xs uppercase text-gray-500 dark:text-slate-400">
-                         <tr>
-                            <th class="px-6 py-4 font-medium">Description</th>
-                            <th class="px-6 py-4 font-medium text-right">Amount</th>
-                            <th class="px-6 py-4 font-medium text-right">Status</th>
-                         </tr>
-                      </thead>
-                      <tbody id="full-transactions-list" class="divide-y divide-gray-100 dark:divide-slate-800">
-                         <!-- Populated by JS -->
-                      </tbody>
-                   </table>
-                </div>
-             </div>
+            <div class="glass-card rounded-3xl overflow-hidden">
+              <div class="p-6 border-b border-gray-100 dark:border-slate-800">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                  Transaction History
+                </h3>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                  <thead
+                    class="bg-gray-50 dark:bg-slate-800 text-xs uppercase text-gray-500 dark:text-slate-400"
+                  >
+                    <tr>
+                      <th class="px-6 py-4 font-medium">Description</th>
+                      <th class="px-6 py-4 font-medium text-right">Amount</th>
+                      <th class="px-6 py-4 font-medium text-right">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    id="full-transactions-list"
+                    class="divide-y divide-gray-100 dark:divide-slate-800"
+                  >
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-
         </div>
       </main>
     </div>
@@ -333,57 +554,65 @@
     <script type="module" src="../scripts/dashboard.js"></script>
     <script>
       // Theme Logic (inline for fast load)
-      const themeBtn = document.getElementById('theme-toggle');
-      const themeIcon = document.getElementById('theme-icon');
-      
+      const themeBtn = document.getElementById("theme-toggle");
+      const themeIcon = document.getElementById("theme-icon");
+
       function updateTheme(isDark) {
         if (isDark) {
-          document.documentElement.classList.add('dark');
-          localStorage.theme = 'dark';
-          themeIcon.innerText = 'light_mode';
+          document.documentElement.classList.add("dark");
+          localStorage.theme = "dark";
+          themeIcon.innerText = "light_mode";
         } else {
-          document.documentElement.classList.remove('dark');
-          localStorage.theme = 'light';
-          themeIcon.innerText = 'dark_mode';
+          document.documentElement.classList.remove("dark");
+          localStorage.theme = "light";
+          themeIcon.innerText = "dark_mode";
         }
       }
 
-      const prefersDark = localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const prefersDark =
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches);
       updateTheme(prefersDark);
 
-      themeBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark');
+      themeBtn.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
         updateTheme(!isDark);
       });
 
       // Mobile Menu Logic
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const closeSidebarBtn = document.getElementById('close-sidebar-btn');
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      
+      const mobileBtn = document.getElementById("mobile-menu-btn");
+      const closeSidebarBtn = document.getElementById("close-sidebar-btn");
+      const sidebar = document.getElementById("sidebar");
+      const backdrop = document.getElementById("sidebar-backdrop");
+
       function toggleSidebar(show) {
         if (show) {
-          sidebar.classList.remove('hidden');
-          sidebar.classList.add('fixed', 'inset-y-0', 'left-0', 'shadow-2xl');
-          backdrop.classList.remove('hidden');
+          sidebar.classList.remove("hidden");
+          sidebar.classList.add("fixed", "inset-y-0", "left-0", "shadow-2xl");
+          backdrop.classList.remove("hidden");
         } else {
-          sidebar.classList.add('hidden');
-          sidebar.classList.remove('fixed', 'inset-y-0', 'left-0', 'shadow-2xl');
-          backdrop.classList.add('hidden');
+          sidebar.classList.add("hidden");
+          sidebar.classList.remove(
+            "fixed",
+            "inset-y-0",
+            "left-0",
+            "shadow-2xl"
+          );
+          backdrop.classList.add("hidden");
         }
       }
 
-      mobileBtn.addEventListener('click', () => toggleSidebar(true));
-      closeSidebarBtn.addEventListener('click', () => toggleSidebar(false));
-      backdrop.addEventListener('click', () => toggleSidebar(false));
-      
+      mobileBtn.addEventListener("click", () => toggleSidebar(true));
+      closeSidebarBtn.addEventListener("click", () => toggleSidebar(false));
+      backdrop.addEventListener("click", () => toggleSidebar(false));
+
       // Close sidebar when clicking a link on mobile
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-           if (window.innerWidth < 768) {
-              toggleSidebar(false);
-           }
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth < 768) {
+            toggleSidebar(false);
+          }
         });
       });
     </script>
