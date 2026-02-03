@@ -132,8 +132,11 @@ function renderLocations() {
       <td class="py-4 px-4 text-sm font-mono text-gray-600 dark:text-slate-400">${loc.routerPass}</td>
       <td class="py-4 px-4 text-sm font-mono text-gray-600 dark:text-slate-400">${loc.stationCode}</td>
       <td class="py-4 px-4 text-right">
-        <button class="toggle-status-btn text-xs font-bold px-3 py-1.5 rounded-lg border transition-all ${loc.status === 'Active' ? 'border-yellow-500 text-yellow-600 hover:bg-yellow-50' : 'border-green-500 text-green-600 hover:bg-green-50'}" data-id="${loc.id}">
+        <button class="toggle-status-btn text-xs font-bold px-3 py-1.5 rounded-lg border transition-all ${loc.status === 'Active' ? 'border-yellow-500 text-yellow-600 hover:bg-yellow-50' : 'border-green-500 text-green-600 hover:bg-green-50'} mr-2" data-id="${loc.id}">
           Set to ${loc.status === 'Active' ? 'Maintenance' : 'Active'}
+        </button>
+        <button class="delete-loc-btn text-xs font-bold px-3 py-1.5 rounded-lg border border-red-500 text-red-600 hover:bg-red-50 transition-all" data-id="${loc.id}">
+          Delete
         </button>
       </td>
     </tr>
@@ -141,6 +144,10 @@ function renderLocations() {
 
   document.querySelectorAll('.toggle-status-btn').forEach(btn => {
     btn.addEventListener('click', () => handleToggleStatus(btn.dataset.id));
+  });
+
+  document.querySelectorAll('.delete-loc-btn').forEach(btn => {
+    btn.addEventListener('click', () => handleDeleteLocation(btn.dataset.id));
   });
 }
 
@@ -153,8 +160,17 @@ function renderOfficers() {
       <td class="py-4 px-4 text-sm text-gray-500 dark:text-slate-400">${off.phone}</td>
       <td class="py-4 px-4 text-sm text-gray-500 dark:text-slate-400">${loc.name || 'Unknown'}</td>
       <td class="py-4 px-4 text-sm font-mono text-gray-600 dark:text-slate-400">${off.stationCode}</td>
+      <td class="py-4 px-4 text-right">
+        <button class="delete-officer-btn text-xs font-bold px-3 py-1.5 rounded-lg border border-red-500 text-red-600 hover:bg-red-50 transition-all" data-id="${off.id}">
+          Delete
+        </button>
+      </td>
     </tr>
   `}).join('');
+
+  document.querySelectorAll('.delete-officer-btn').forEach(btn => {
+    btn.addEventListener('click', () => handleDeleteOfficer(btn.dataset.id));
+  });
 }
 
 // --- Action Handlers ---
@@ -258,6 +274,52 @@ async function handleRegeneratePasswords() {
           await Api.post('/locations/regenerate-passwords', {});
           Ui.toast('success', 'Success', 'All router passwords have been regenerated.');
           fetchLocations();
+      } catch (err) {
+          Ui.toast('error', 'Failed', err.message);
+      }
+  }
+}
+
+async function handleDeleteLocation(id) {
+  const loc = LOCATIONS.find(l => l.id === id);
+  if (!loc) return;
+
+  const confirmed = await Ui.alert(
+    'warning',
+    'Delete Location?',
+    `Are you sure you want to delete <b>${loc.name}</b>? This action cannot be undone.`,
+    true, true
+  );
+
+  if (confirmed && confirmed.isConfirmed) {
+      try {
+          await Api.delete(`/locations/${id}`);
+          Ui.toast('success', 'Deleted', `${loc.name} has been deleted.`);
+          fetchLocations();
+          fetchStats();
+      } catch (err) {
+          Ui.toast('error', 'Failed', err.message);
+      }
+  }
+}
+
+async function handleDeleteOfficer(id) {
+  const officer = OFFICERS.find(o => o.id === id);
+  if (!officer) return;
+
+  const confirmed = await Ui.alert(
+    'warning',
+    'Delete Officer?',
+    `Are you sure you want to delete <b>${officer.name}</b>?`,
+    true, true
+  );
+
+  if (confirmed && confirmed.isConfirmed) {
+      try {
+          await Api.delete(`/officers/${id}`);
+          Ui.toast('success', 'Deleted', `${officer.name} has been deleted.`);
+          fetchOfficers();
+          fetchStats();
       } catch (err) {
           Ui.toast('error', 'Failed', err.message);
       }

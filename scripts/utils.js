@@ -4,7 +4,7 @@ export class Ui {
     title,
     message,
     showConfirmButton,
-    showCancelButton
+    showCancelButton,
   ) {
     const isAction = icon === "question" || icon === "warning";
     const confirm =
@@ -41,8 +41,8 @@ export class Ui {
 }
 
 export class Api {
-  // static baseUrl = 'http://localhost:3000/api/v1';
-  static baseUrl = "https://zipsurf.veetech.site/api/v1";
+  static baseUrl = "http://localhost:3000/api/v1";
+  // static baseUrl = "https://zipsurf.veetech.site/api/v1";
 
   static getHeaders() {
     const headers = {
