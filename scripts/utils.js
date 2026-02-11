@@ -42,7 +42,9 @@ export class Ui {
 
 export class Api {
   // static baseUrl = "http://localhost:3000/api/v1";
-   static baseUrl = "https://zipsurf.veetech.site/api/v1";
+   // static baseUrl = "https://zipsurf.veetech.site/api/v1"; 
+   static baseUrl = "https://zipsurf-server.onrender.com/api/v1"; 
+  
 
   static getHeaders() {
     const headers = {
